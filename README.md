@@ -1,6 +1,6 @@
 ***UPDATE: Linux Compatibility has been solved **
 
-***This software is currently PRE-PRE-PRE-ALPHA and has formatting issues with the final output log pertaining to datetime and teh header file outputs. 
+***This software is currently PRE-PRE-PRE-ALPHA and has formatting issues with the final output log pertaining to datetime and the header file outputs. 
 
 
 microCabrilloLog is a small, python based, cabrillo logging software that is mostly compatible with the 2024 Idaho QSO Party log format but still has some quirks. Our end goal is to have an editor compatible with the ARRL Field Day* and other amateur radio competitions. 
