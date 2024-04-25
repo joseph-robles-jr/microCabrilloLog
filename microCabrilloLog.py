@@ -215,7 +215,7 @@ def start_logging(header_dictionary):
             utc_time = convert_to_utc()
             
 
-            file.write(f"{current_frequency} PH {utc_time} {header_dictionary['callsign']}\t {rst_sent} {header_dictionary['County or DX']}\t{rx_callsign}\t {rst_recived} {exchange_recived}\n")
+            file.write(f"{current_frequency} PH {utc_time} {header_dictionary['callsign']}\t {rst_sent} {header_dictionary['county or DX']}\t{rx_callsign}\t {rst_recived} {exchange_recived}\n")
 
             
             end_logging = give_me_a_bool("Are you finished logging contacts?")
