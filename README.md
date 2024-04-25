@@ -8,6 +8,13 @@ microCabrilloLog is a small, python based, cabrillo logging software that is mos
 The source code for this project can be found on GitHub at https://github.com/joseph-robles-jr/microCabrilloLog.
 Pull Requests are welcome.
 
+Prerequisites:
+  - An opperating system that supports python3 (Windows(7, 8, 10, 11), Linux, Haiku OS (Yes, really), and many more...) 
+  - A version of Python 3 (3.12 works well)
+  - The microCabrillo.py file
+
+    Simple navigate to the microCabrillo.py file and execute it with "python3 microCabrillo.py", "py microCabrillo.py" or in whatever way your opperating system executes python       files. 
+
 
 
 Disclaimer:
