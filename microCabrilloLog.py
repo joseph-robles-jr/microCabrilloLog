@@ -65,7 +65,7 @@ def convert_to_utc():
     dt = datetime.datetime.now(timezone.utc)
 
 
-    return dt #OUTPUT MAY NEED TO BE TWEAKED T0 CONFORM TO .CABRILLO
+    return dt #OUTPUT MAY NEED TO BE TWEAKED T0 CONFORM TO .log
 
 
 def give_me_a_bool(string_to_print): # Function complete
@@ -180,8 +180,8 @@ def collect_header_info():
 def print_to_log(header_dictionary):
     """Writes the header file to the log.cabrillo file in the proper format"""
 
-    #creates log.cabrillo and appends the details from teh header_dictionary that has been passed.
-    with open('log.cabrillo', 'a') as file:
+    #creates log.log and appends the details from teh header_dictionary that has been passed.
+    with open('log.log', 'a') as file:
         file.write("START-OF-LOG: 2.0\n")
         file.write(f"ARRL-SECTION: {header_dictionary['arrl-section']}\n")
         file.write(f"CALLSIGN: {header_dictionary['callsign']}\n")
@@ -198,11 +198,11 @@ def print_to_log(header_dictionary):
 def start_logging(header_dictionary):
     """
     Requires a dictionary of the header. 
-    Writes QSO data, including RST, Calsign, and current time to the log.cabrillo file until user trminates the function.
+    Writes QSO data, including RST, Calsign, and current time to the log.log file until user trminates the function.
     """
     end_logging = False
     while end_logging != True:
-        with open('log.cabrillo', 'a') as file:
+        with open('log.log', 'a') as file:
             file.write("QSO: ")
             current_frequency = input("Enter Frequency in khz: ")
             rx_callsign = input('Callsign of recived station: ').upper()
@@ -220,7 +220,7 @@ def start_logging(header_dictionary):
             
             end_logging = give_me_a_bool("Are you finished logging contacts?")
         
-        with open('log.cabrillo', 'a') as file:
+        with open('log.log', 'a') as file:
             file.write("\nEND-OF-LOG:")
 
     print("Log complete and exported")
