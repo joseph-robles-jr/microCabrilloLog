@@ -135,7 +135,6 @@ def collect_header_info():
         county = ""
         #ask for 3 letter county ID
         while len(county) != 3:
-            print()# Makes a new line for correctly dispaying on haik os.
             input_state = str(input("What is your 3 digit county identifier?: "))
             #check for length of 3 letters. Reprompt if not
             if len(input_state) == 3:
