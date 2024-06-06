@@ -59,6 +59,9 @@ END-OF-LOG:
 
 
 """
+def clear_screen():
+    #clear console with ASCII escape code
+    print('\033c', end='')
 
 def convert_to_utc():
     """Converts a given time to UTC and returns it"""
@@ -110,8 +113,9 @@ def collect_header_info():
     }
     
     #get the callsign of the user
+    clear_screen()
     callsign = str(input("What is your callsign?: "))
-    print()# new line for haiku compatability
+    clear_screen()# new line for haiku compatability
     #clean up common input mistakes
     callsign.strip(" ")
     callsign.strip()
@@ -119,7 +123,7 @@ def collect_header_info():
      
     #Will a spotting network be used; sets Assisted catagory
     is_assisted = give_me_a_bool("Will you be using a spotting network?") #return BOOL. Yes is true. No is False here\
-    print() #new line for haiku compatabiity.
+    clear_screen() #new line for haiku compatabiity.
 
     if is_assisted == True:
         catagory_assisted = "ASSISTED"
@@ -128,7 +132,7 @@ def collect_header_info():
     
     ##chacks location of the user
     idaho = give_me_a_bool("Are you located in Idaho?") #Returns BOOL
-    print() #new line for haiku compatabiity.
+    clear_screen() #new line for haiku compatabiity.
     if idaho == True:
         state = "ID"
         collected_dict["arrl-section"] = state
@@ -146,45 +150,45 @@ def collect_header_info():
         
         while len(state) != 2:
             input_state = str(input("What is your 2 letter state ID (i.e. AZ, TX, ID etc...)? If out of USA, please enter 'DX' ").upper())
-            print()# new line for haiku compatability
+            clear_screen()# new line for haiku compatability
 
             input_arrl_section = input('What is your ARRL section?: ')
             collected_dict["arrl-section"] = input_arrl_section
 
-            print() #new line for haiku compatabiity. 
+            clear_screen() #new line for haiku compatabiity. 
             if len(input_state) == 2:
                 state = input_state
             
         
     #What club are you a part of?
-    print()# new line for haiku compatability
+    clear_screen()# new line for haiku compatability
     is_part_of_club = give_me_a_bool("Are you part of a radio club?")
-    print()# new line for haiku compatability
+    clear_screen()# new line for haiku compatability
     if is_part_of_club == True:
         club_correct = False 
 
         #ensures that the user entered the correct value
         while club_correct == False:
             input_club = input("What is your club name (Not Club Callsign)?: ")
-            print()# new line for haiku compatability
             club_check_string = (f"Is {input_club} correct?")
-            print() #new line for haiku compatabiity.
+            clear_screen() #new line for haiku compatabiity.
             club_correct = give_me_a_bool(club_check_string)
+
             if club_correct == True:
                 club = input_club.capitalize()
                 collected_dict['club'] = club
             else:
                 pass
     collected_dict['name'] = input("What is your first name?: ")
-    print()# new line for haiku compatability
+    clear_screen()# new line for haiku compatability
 
     collected_dict['address 1'] = input("What is your street address?: ")
-    print()# new line for haiku compatability
+    clear_screen()# new line for haiku compatability
 
     collected_dict['city_state_zip'] = input("Now your City, State, and Zip in that order: ")
-    print()# new line for haiku compatability
+    clear_screen()# new line for haiku compatability
     collected_dict['country'] = input("What is your country?: ")
-    print()# new line for haiku compatability
+    clear_screen()# new line for haiku compatability
 
 
 
@@ -225,21 +229,19 @@ def start_logging(header_dictionary):
             print()# new line for haiku compatability
             rst_recived = input("Input the recived RST report (59): ")
             print()# new line for haiku compatability
-            
-            rst_sent = input("Input the sent RST report (59): ")
+            rst_sent = input("Input the sent RST report (59): ") #How does the recived station sound in the 5/9 scale?
             print()# new line for haiku compatability
-
-            exchange_recived = input('Input the 2 letter arrl section or the 3 leter county abreviation: ').upper()
+            exchange_recived = input('Input the 2 letter arrl section or the 3 leter county abreviation: ').upper() 
             print()# new line for haiku compatability
             
             utc_time = convert_to_utc()
-            
 
+            #Writes the QSO info to the .log file
             file.write(f"{current_frequency} PH {utc_time} {header_dictionary['callsign']}\t {rst_sent} {header_dictionary['county or DX']}\t{rx_callsign}\t {rst_recived} {exchange_recived}\n")
 
             
             end_logging = give_me_a_bool("Are you finished logging contacts?")
-            print()# new line for haiku compatability
+            clear_screen()# new line for haiku compatability
         
         with open('log.log', 'a') as file:
             file.write("\nEND-OF-LOG:")
